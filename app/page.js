@@ -12,7 +12,7 @@ export default function Home() {
   useEffect(() => {
     setTimeout(() => {
       setLoading(false)
-    }, 2000)
+    }, 500)
   }, [])
 
   function Card() {
