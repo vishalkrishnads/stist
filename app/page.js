@@ -3,12 +3,21 @@
 import Image from 'next/image'
 import styles from './page.module.css'
 import Link from 'next/link'
+import { useState, useEffect } from 'react'
 
 export default function Home() {
 
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    setTimeout(() => {
+      setLoading(false)
+    }, 2000)
+  }, [])
+
   function Card() {
     
-    return <Link href={"/dish"}>
+    return <Link href={"/dish/a"}>
     <div className={styles.card}>
       <div className={styles.image}>
         <Image
@@ -31,11 +40,19 @@ export default function Home() {
   }
 
   return (
-    <main className={styles.main}>
-      <Card />
-      <Card />
-      <Card />
-      <Card />
+    <main className={styles.main} style={{ justifyContent: loading ? 'center' : 'space-evenly', alignItems: loading ? 'center' : 'flex-start'}}>
+      {loading ? <div className={styles.logo}>
+        <Image
+          src={'/logo.png'}
+          width={200}
+          height={200} 
+        />
+      </div> : <>
+        <Card />
+        <Card />
+        <Card />
+        <Card />
+      </>}
     </main>
   )
 }

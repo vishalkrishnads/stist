@@ -2,8 +2,6 @@
   flex: 1;
   display: flex;
   flex-wrap: wrap;
-  align-items: flex-start;
-  justify-content: space-evenly;
   padding: 0 3vw 1vh 3vw;
   overflow-y: scroll;
 }
@@ -66,6 +64,20 @@
 .card > .info > p {
   font-size: 1vw;
   color: grey;
+}
+
+.logo {
+  opacity: 0;
+  animation: fadeInOut 0.3s infinite alternate;
+}
+
+@keyframes fadeInOut {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
 }
 
 @media only screen and (max-width: 1100px) {
