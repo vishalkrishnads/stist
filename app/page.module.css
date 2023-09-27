@@ -1,0 +1,113 @@
+.main {
+  flex: 1;
+  display: flex;
+  flex-wrap: wrap;
+  padding: 0 3vw 1vh 3vw;
+  overflow-y: scroll;
+}
+
+.main::-webkit-scrollbar {
+  width: 0;
+}
+
+.main::-webkit-scrollbar-thumb {
+  background: var(--accent);
+}
+
+.main::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.card {
+  width: 20vw;
+  height: 20vw;
+  margin: 1vw;
+  display: flex;
+  flex-direction: column;
+  padding: 2vw;
+  border-radius: 20px;
+  background-color: rgb(var(--background-secondary));
+}
+
+.card:hover {
+  background-color: var(--hover);
+  box-shadow: 0 4px 8px 0 rgba(242, 242, 242, 0.2), 0 6px 20px 0 rgba(242, 242, 242, 0.19);
+}
+
+.card > .image {
+  flex: 3;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+}
+
+.card > .info {
+  flex: 2;
+  padding-left: 10%;
+  padding-right: 10%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.card > .info > h1 {
+  font-size: 1.4vw;
+}
+
+.card:hover > .info > h1 {
+  color: var(--accent);
+}
+
+.card > .info > p {
+  font-size: 1vw;
+  color: grey;
+}
+
+.logo {
+  opacity: 0;
+  animation: fadeInOut 0.3s infinite alternate;
+}
+
+@keyframes fadeInOut {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@media only screen and (max-width: 1100px) {
+  .card {
+    width: 50vw;
+    height: 50vw;
+  }
+
+  .card > .info > h1 {
+    font-size: 3vw;
+  }
+  
+  .card > .info > p {
+    font-size: 2vw;
+  }
+  
+}
+
+@media only screen and (max-width: 500px) {
+  .card {
+    width: 85vw;
+    height: 85vw;
+    margin-bottom: 2vh;
+  }
+
+  .card > .info > h1 {
+    font-size: 6vw;
+  }
+  
+  .card > .info > p {
+    font-size: 4vw;
+  }
+}
