@@ -1,5 +1,6 @@
 import './globals.css'
 import { Poppins } from 'next/font/google'
+import Header from './components/Header'
 
 const poppins = Poppins({ subsets: ['latin'], weight: ['100', '200', '300', '400', '500', '600'] })
 
@@ -14,10 +15,7 @@ export default function RootLayout({ children }) {
       <body className={poppins.className}>
         <header>
           <div className='margin' />
-          <div className='header'>
-            <h1><u>Ruchi</u>kootu</h1>
-            <h4>STIST x <a>FOSS United</a></h4>
-          </div>
+          <Header />
           <div className='margin' />
         </header>
         <div className='content'>{children}</div>
