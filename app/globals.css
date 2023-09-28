@@ -56,6 +56,14 @@ body > header > .header {
   justify-content: center;
 }
 
+body > header > .header > .link {
+  width: 20%;
+}
+
+body > header > .header > .link:hover {
+  cursor: pointer;
+}
+
 body > header h1 {
   font-size: 200%;
 }
@@ -83,8 +91,22 @@ a {
   text-decoration: none;
 }
 
+@media only screen and (max-width: 1000px) {
+  body > header > .header > .link {
+    width: 30%;
+  }
+}
+
 @media only screen and (max-width: 500px) {
   body > header > .header {
+    justify-content: center;
+    align-items: center;
+  }
+
+  body > header > .header > .link {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
   }
