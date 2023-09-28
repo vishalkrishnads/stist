@@ -1,3 +1,5 @@
+<img src="https://github.com/vishalkrishnads/stist/assets/50231856/0edfe768-17b5-4935-9657-1ada79f639e8" alt="FOSS Club, STIST" align="right" width="250">
+
 # FOSS Club, STIST
 This is a game to be played by the participants at the inaugural ceremony of the [FOSS Club](https://fossunited.org/clubs) chapter at [STIST](https://www.stisttvm.edu.in/). It intends to familiarize participants with the idea of open source software & how to get started in the world of FOSS.
 > written with [Next.js](https://nextjs.org) & hosted on [Vercel](https://vercel.com). have a look at the [deployment](https://stist.vercel.app)
