@@ -8,10 +8,12 @@ import { getContributor, refresh } from './api/api'
 
 export default function Home() {
 
+  const [loading, setLoading] = useState(true)
   const [dishes, setDishes] = useState([])
 
   useEffect(() => {
     setDishes(refresh())
+    setTimeout(() => setLoading(false), 500)
   }, [])
 
   function Card({ dish, index }) {
@@ -50,8 +52,8 @@ export default function Home() {
   }
 
   return (
-    <main className={styles.main} style={{ justifyContent: dishes.length == 0 ? 'center' : 'space-evenly', alignItems: dishes.length == 0 ? 'center' : 'flex-start'}}>
-      {dishes.length == 0 ? <div className={styles.logo}>
+    <main className={styles.main} style={{ justifyContent: loading ? 'center' : 'space-evenly', alignItems: loading ? 'center' : 'flex-start'}}>
+      {loading ? <div className={styles.logo}>
         <Image
           src={'/logo.png'}
           width={200}
