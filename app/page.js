@@ -12,9 +12,20 @@ export default function Home() {
   const [dishes, setDishes] = useState([])
 
   useEffect(() => {
-    setDishes(refresh())
+    refresh()
+    .then((result) => setDishes(result))
+    .catch(() => setDishes([]))
     setTimeout(() => setLoading(false), 500)
   }, [])
+
+  const Logo = ({ dimension }) => {
+    return <Image
+      src={'/logo.png'}
+      width={dimension}
+      height={dimension}
+      alt={'FOSS Club'}
+    />
+  }
 
   function Card({ dish, index }) {
 
@@ -52,15 +63,16 @@ export default function Home() {
   }
 
   return (
-    <main className={styles.main} style={{ justifyContent: loading ? 'center' : 'space-evenly', alignItems: loading ? 'center' : 'flex-start'}}>
+    <main className={styles.main} style={{ justifyContent: loading || dishes.length == 0 ? 'center' : 'space-evenly', alignItems: loading || dishes.length == 0 ? 'center' : 'flex-start'}}>
       {loading ? <div className={styles.logo}>
-        <Image
-          src={'/logo.png'}
-          width={200}
-          height={200}
-          alt={'FOSS Club'}
-        />
-      </div> : <>
+        <Logo dimension={200} />
+      </div> : dishes.length == 0 ?
+        <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center' }}>
+          <Logo dimension={100} />
+          <strong style={{ marginTop: '10px' }}>Ivide onnum thanne illa</strong>
+          <p>Poyi list il vallom cherkk</p>
+        </div>
+      : <>
         {dishes.map((item, index) => {
           return <Card index={index} key={index} dish={item} />
         })}

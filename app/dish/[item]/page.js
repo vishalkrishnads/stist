@@ -13,15 +13,23 @@ export default function Dish({ params }) {
     ingredients: [],
     recipe: []
   })
+  const [error, setError] = useState('loading')
 
   useEffect(() => {
-    setDish(getDish(parseInt(params.item)))
+    getDish(parseInt(params.item))
+    .then((result) => {
+      setDish(result);
+      setError('')
+    })
+    .catch((error) => setError(error))
   }, [])
 
   return (
     <main className={styles.main}>
 
-      <div className={styles.desktop}>
+      {error ?
+      <p>{error}</p>
+      : <div className={styles.desktop}>
         <div className={styles.info}>
           <div style={{ flex: 0.5 }} />
           <div className={styles.container}>
@@ -65,9 +73,11 @@ export default function Dish({ params }) {
             </ul>
           </div>
         </div>
-      </div>
+      </div>}
 
-      <div className={styles.mobile}>
+      {error ?
+      null
+      : <div className={styles.mobile}>
         <div className={styles.info}>
             <Image
               loader={({ src }) => {
@@ -107,7 +117,7 @@ export default function Dish({ params }) {
             </ul>
           </div>
         </div>
-      </div>
+      </div>}
     </main>
   )
 }
